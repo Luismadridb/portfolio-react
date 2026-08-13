@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="hero-grid">
         <div className="btnrow">
           <a className="btn" href={`mailto:${profile.email}`}>
-            Escribirme
+            Hablemos
           </a>
           <a
             className="btn ghost"
