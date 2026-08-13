@@ -1,6 +1,19 @@
+import { useState } from 'react';
 import { profile } from '../data/portfolio';
 
 export default function Hero() {
+  const [copied, setCopied] = useState(false);
+
+  const handleContactClick = async (e) => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Si el navegador bloquea el portapapeles, el mailto sigue intentando abrir igual.
+    }
+  };
+
   return (
     <section className="hero" style={{ borderTop: 'none' }}>
       <div className="eyebrow">Ficha técnica — {profile.name}</div>
@@ -15,10 +28,14 @@ export default function Hero() {
 
       <div className="hero-grid">
         <div className="btnrow">
-          <a className="btn" href={`mailto:${profile.email}`}>
-            Hablemos
+          
+            className="btn"
+            href={`mailto:${profile.email}`}
+            onClick={handleContactClick}
+          >
+            {copied ? 'Email copiado ✓' : 'Hablemos'}
           </a>
-          <a
+          
             className="btn ghost"
             href={profile.github}
             target="_blank"
@@ -26,7 +43,7 @@ export default function Hero() {
           >
             Ver GitHub
           </a>
-          <a
+          
             className="btn ghost"
             href={profile.linkedin}
             target="_blank"
