@@ -6,7 +6,6 @@ export default function Hero() {
 
   return (
     <section className="hero" style={{ borderTop: 'none' }}>
-      <div className="eyebrow">Ficha técnica — {profile.name}</div>
       <h1 className="title">
         Construyo software con la precisión de quien antes construía piezas.
       </h1>
